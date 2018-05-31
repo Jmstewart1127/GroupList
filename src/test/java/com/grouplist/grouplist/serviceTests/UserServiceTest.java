@@ -1,4 +1,4 @@
-package serviceTests;
+package com.grouplist.grouplist.serviceTests;
 
 import com.grouplist.grouplist.GrouplistApplication;
 import com.grouplist.grouplist.model.Users;

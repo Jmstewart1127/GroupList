@@ -15,6 +15,8 @@ public class UserGroups {
     @JoinColumn(name = "group_id")
     private Groups groupId;
 
+    public UserGroups() {}
+
     public UserGroups(Groups group, Users user) {
         this.setGroupId(group);
         this.setUserId(user);

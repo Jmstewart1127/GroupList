@@ -14,6 +14,8 @@ public class ListItems {
     @JoinColumn(name = "list_id")
     private Lists listId;
 
+    public ListItems() {}
+
     public ListItems(Lists list) {
         this.setComplete(false);
         this.setListId(list);

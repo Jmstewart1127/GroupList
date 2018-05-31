@@ -11,6 +11,8 @@ public class Users {
     @Column(name = "phone_number")
     private String phoneNumber;
 
+    public Users() {}
+
     public Users(String phoneNumber) {
         setPhoneNumber(phoneNumber);
     }
