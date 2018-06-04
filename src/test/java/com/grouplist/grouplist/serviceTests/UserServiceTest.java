@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Random;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = GrouplistApplication.class)
 public class UserServiceTest {
@@ -19,9 +21,11 @@ public class UserServiceTest {
 
     @Test
     public void testCreateUser() {
-        Users user = new Users("1234567");
+        Random randInt = new Random();
+        String phoneNumber = Integer.toString(randInt.nextInt(9999999));
+        Users user = new Users(phoneNumber);
         userService.createUser(user);
-        Assert.assertTrue(userService.checkIfPhoneNumberIsInUse(user.getPhoneNumber()));
+        Assert.assertFalse(userService.checkIfPhoneNumberIsInUse(user.getPhoneNumber()));
     }
 
 }
