@@ -15,8 +15,8 @@ public class GroupsService {
         return groupsRepository.findGroupsById(id);
     }
 
-    public void createNewGroup() {
-        groupsRepository.save(new Groups());
+    public void createNewGroup(String groupName) {
+        groupsRepository.save(new Groups(groupName));
     }
 
 }

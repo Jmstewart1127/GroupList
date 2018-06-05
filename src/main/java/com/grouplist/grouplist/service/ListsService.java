@@ -18,4 +18,8 @@ public class ListsService {
     public Iterable<Lists> findListsByGroupId(int id) {
         return listsRepository.findAllByGroupId(id);
     }
+
+    public void saveList(Lists list) {
+        listsRepository.save(list);
+    }
 }

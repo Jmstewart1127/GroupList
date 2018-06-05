@@ -10,9 +10,11 @@ public class ListItems {
     private int id;
     @Column(name = "complete")
     private boolean complete;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "list_id")
     private Lists listId;
+    @Column(name = "name")
+    private String name;
 
     public ListItems() {}
 
@@ -43,5 +45,13 @@ public class ListItems {
 
     public void setListId(Lists listId) {
         this.listId = listId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

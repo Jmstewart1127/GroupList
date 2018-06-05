@@ -13,6 +13,10 @@ public class Groups {
 
     public Groups() {}
 
+    public Groups(String groupName) {
+        setGroupName(groupName);
+    }
+
     public int getId() {
         return id;
     }
