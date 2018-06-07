@@ -12,18 +12,14 @@ public class ListItemsService {
     @Autowired
     ListItemsRepository listItemsRepository;
 
-    public Iterable<ListItems> findAllListItemsByListId(int id) {
-        return listItemsRepository.findAllByListId(id);
-    }
-
     public void completeListItem(int id) {
         ListItems listItem = listItemsRepository.findById(id);
         listItem.setComplete(true);
         listItemsRepository.save(listItem);
     }
 
-    public void createListItem(Lists list) {
-        ListItems newListItem = new ListItems(list);
-        listItemsRepository.save(newListItem);
-    }
+//    public void createListItem(Lists list) {
+//        ListItems newListItem = new ListItems(list);
+//        listItemsRepository.save(newListItem);
+//    }
 }

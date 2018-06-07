@@ -1,11 +1,13 @@
 package com.grouplist.grouplist.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@Entity
+@Entity(name = "Lists")
+@Table(name = "lists")
 public class Lists {
 
     @Id
@@ -14,9 +16,8 @@ public class Lists {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "group_id")
     private Groups groupId;
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "list_items")
-    private List<ListItems> items;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<ListItems> items = new ArrayList<>();
     @Column(name = "list_name")
     private String listName;
 

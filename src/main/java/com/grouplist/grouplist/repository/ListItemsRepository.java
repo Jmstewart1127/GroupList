@@ -7,6 +7,6 @@ public interface ListItemsRepository extends CrudRepository<ListItems, Long> {
 
     ListItems findById(int id);
 
-    Iterable<ListItems> findAllByListId(int id);
+    Iterable<ListItems> findAllById(int id);
 
 }

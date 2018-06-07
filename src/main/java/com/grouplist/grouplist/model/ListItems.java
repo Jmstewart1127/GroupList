@@ -3,6 +3,7 @@ package com.grouplist.grouplist.model;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "list_items")
 public class ListItems {
 
     @Id
@@ -10,17 +11,14 @@ public class ListItems {
     private int id;
     @Column(name = "complete")
     private boolean complete;
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "list_id")
-    private Lists listId;
     @Column(name = "name")
     private String name;
 
     public ListItems() {}
 
-    public ListItems(Lists list) {
+    public ListItems(String name) {
         this.setComplete(false);
-        this.setListId(list);
+        this.setName(name);
     }
 
     public int getId() {
@@ -37,14 +35,6 @@ public class ListItems {
 
     public void setComplete(boolean complete) {
         this.complete = complete;
-    }
-
-    public Lists getListId() {
-        return listId;
-    }
-
-    public void setListId(Lists listId) {
-        this.listId = listId;
     }
 
     public String getName() {

@@ -1,9 +1,13 @@
 package com.grouplist.grouplist.service;
 
+import com.grouplist.grouplist.model.ListItems;
 import com.grouplist.grouplist.model.Lists;
 import com.grouplist.grouplist.repository.ListsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class ListsService {
@@ -20,6 +24,14 @@ public class ListsService {
     }
 
     public void saveList(Lists list) {
+        listsRepository.save(list);
+    }
+
+    public void addListItem(Lists list, String itemName) {
+        ListItems listItem = new ListItems(itemName);
+        List<ListItems> li = list.getItems();
+        li.add(listItem);
+        list.setItems(li);
         listsRepository.save(list);
     }
 }
