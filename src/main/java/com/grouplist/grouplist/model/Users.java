@@ -10,7 +10,6 @@ public class Users {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
     private int id;
     @Column(name = "phone_number")
     private String phoneNumber;

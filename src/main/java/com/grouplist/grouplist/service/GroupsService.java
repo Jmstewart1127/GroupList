@@ -15,8 +15,15 @@ public class GroupsService {
         return groupsRepository.findGroupsById(id);
     }
 
-    public void createNewGroup(String groupName) {
-        groupsRepository.save(new Groups(groupName));
+    public Iterable<Groups> findGroupsCreatedByUser(int userId) {
+        return groupsRepository.findAllGroupsByCreatedBy(userId);
     }
 
+    public void createNewGroup(int userId, String groupName) {
+        groupsRepository.save(new Groups(userId, groupName));
+    }
+
+    public void save(Groups group) {
+        groupsRepository.save(group);
+    }
 }

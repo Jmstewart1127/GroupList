@@ -3,7 +3,7 @@ package com.grouplist.grouplist.repository;
 import com.grouplist.grouplist.model.Items;
 import org.springframework.data.repository.CrudRepository;
 
-public interface ListItemsRepository extends CrudRepository<Items, Long> {
+public interface ItemsRepository extends CrudRepository<Items, Long> {
 
     Items findById(int id);
 

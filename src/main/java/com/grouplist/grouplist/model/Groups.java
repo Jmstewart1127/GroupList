@@ -11,11 +11,13 @@ public class Groups {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    @Column(name = "created_by")
+    private int createdBy;
     @Column(name = "group_name")
     private String groupName;
     @ManyToMany(cascade = { CascadeType.ALL })
     @JoinTable(
-            name = "user_groups_users",
+            name = "user_groups",
             joinColumns = { @JoinColumn(name = "group_id") },
             inverseJoinColumns = { @JoinColumn(name = "user_id") }
     )
@@ -27,12 +29,25 @@ public class Groups {
         setGroupName(groupName);
     }
 
+    public Groups(int createdBy, String groupName) {
+        setCreatedBy(createdBy);
+        setGroupName(groupName);
+    }
+
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(int createdBy) {
+        this.createdBy = createdBy;
     }
 
     public String getGroupName() {

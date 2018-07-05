@@ -7,4 +7,6 @@ public interface GroupsRepository extends CrudRepository<Groups, Long> {
 
     Groups findGroupsById(int id);
 
+    Iterable<Groups> findAllGroupsByCreatedBy(int createdBy);
+
 }

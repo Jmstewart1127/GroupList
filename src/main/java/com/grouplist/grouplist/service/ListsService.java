@@ -1,5 +1,6 @@
 package com.grouplist.grouplist.service;
 
+import com.grouplist.grouplist.model.Groups;
 import com.grouplist.grouplist.model.Items;
 import com.grouplist.grouplist.model.Lists;
 import com.grouplist.grouplist.repository.ListsRepository;
@@ -14,23 +15,25 @@ public class ListsService {
     @Autowired
     ListsRepository listsRepository;
 
+    @Autowired
+    GroupsService groupsService;
+
     public Lists findListById(int id) {
         return listsRepository.findById(id);
     }
 
     public Iterable<Lists> findListsByGroupId(int id) {
-        return listsRepository.findAllByGroupId(id);
+        Groups group = groupsService.findGroupById(id);
+        return listsRepository.findAllByGroupId(group);
+    }
+
+    public Iterable<Lists> findAllLists() {
+        return listsRepository.findAll();
     }
 
     public void saveList(Lists list) {
         listsRepository.save(list);
     }
 
-    public void addListItem(Lists list, String itemName) {
-        Items listItem = new Items(itemName);
-        List<Items> li = list.getItems();
-        li.add(listItem);
-        list.setItems(li);
-        listsRepository.save(list);
-    }
+
 }

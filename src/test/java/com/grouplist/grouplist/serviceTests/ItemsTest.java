@@ -4,7 +4,7 @@ import com.grouplist.grouplist.GrouplistApplication;
 import com.grouplist.grouplist.model.Groups;
 import com.grouplist.grouplist.model.Items;
 import com.grouplist.grouplist.model.Lists;
-import com.grouplist.grouplist.service.ListItemsService;
+import com.grouplist.grouplist.service.ItemsService;
 import com.grouplist.grouplist.service.ListsService;
 import org.junit.Assert;
 import org.junit.Test;
@@ -23,24 +23,34 @@ public class ItemsTest {
     ListsService listsService;
 
     @Autowired
-    ListItemsService listItemsService;
+    ItemsService itemsService;
 
     @Test
     public void testCreatingListItems() {
         Groups group = new Groups("group2");
         Lists list = new Lists(group, "test");
         listsService.saveList(list);
-        Lists testList = listsService.findListById(61);
-        listsService.addListItem(testList, "test");
+        Lists testList = listsService.findListById(list.getId());
+        itemsService.addListItem(testList, "test");
         Assert.assertNotNull(testList.getItems());
+    }
+
+    @Test
+    public void addListItemToAlreadyCreatedList() {
+        Groups group = new Groups("group2");
+        Lists list = new Lists(group, "test");
+        listsService.saveList(list);
+        for (int i = 0; i < 25; i++) {
+            itemsService.addListItem(list, Integer.toString(i));
+        }
     }
 
     @Test
     public void retrieveListItems() {
         Lists list = listsService.findListById(61);
         List<Items> items = list.getItems();
-
-        for (Items li : items)
+        for (Items li : items) {
             System.out.println(li.getName());
+        }
     }
 }
