@@ -2,9 +2,7 @@ package com.grouplist.grouplist.model;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Entity(name = "Lists")
 @Table(name = "lists")
@@ -17,7 +15,7 @@ public class Lists {
     @JoinColumn(name = "group_id")
     private Groups groupId;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<ListItems> items = new ArrayList<>();
+    private List<Items> items = new ArrayList<>();
     @Column(name = "list_name")
     private String listName;
 
@@ -44,11 +42,11 @@ public class Lists {
         this.groupId = groupId;
     }
 
-    public List<ListItems> getItems() {
+    public List<Items> getItems() {
         return items;
     }
 
-    public void setItems(List<ListItems> items) {
+    public void setItems(List<Items> items) {
         this.items = items;
     }
 

@@ -2,7 +2,7 @@ package com.grouplist.grouplist.serviceTests;
 
 import com.grouplist.grouplist.GrouplistApplication;
 import com.grouplist.grouplist.model.Groups;
-import com.grouplist.grouplist.model.ListItems;
+import com.grouplist.grouplist.model.Items;
 import com.grouplist.grouplist.model.Lists;
 import com.grouplist.grouplist.service.ListItemsService;
 import com.grouplist.grouplist.service.ListsService;
@@ -13,12 +13,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = GrouplistApplication.class)
-public class ListItemsTest {
+public class ItemsTest {
 
     @Autowired
     ListsService listsService;
@@ -39,9 +38,9 @@ public class ListItemsTest {
     @Test
     public void retrieveListItems() {
         Lists list = listsService.findListById(61);
-        List<ListItems> listItems = list.getItems();
+        List<Items> items = list.getItems();
 
-        for (ListItems li : listItems)
+        for (Items li : items)
             System.out.println(li.getName());
     }
 }

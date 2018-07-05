@@ -1,10 +1,8 @@
 package com.grouplist.grouplist.repository;
 
-import com.grouplist.grouplist.model.ListItems;
+import com.grouplist.grouplist.model.Items;
 import com.grouplist.grouplist.model.Lists;
 import org.springframework.data.repository.CrudRepository;
-
-import javax.persistence.Query;
 
 public interface ListsRepository extends CrudRepository<Lists, Long> {
 
@@ -12,6 +10,6 @@ public interface ListsRepository extends CrudRepository<Lists, Long> {
 
     Iterable<Lists> findAllByGroupId(int id);
 
-    Iterable<ListItems> findAllListItemsByid(int id);
+    Iterable<Items> findAllListItemsByid(int id);
 
 }

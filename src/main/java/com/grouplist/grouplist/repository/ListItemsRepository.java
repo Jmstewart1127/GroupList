@@ -1,12 +1,12 @@
 package com.grouplist.grouplist.repository;
 
-import com.grouplist.grouplist.model.ListItems;
+import com.grouplist.grouplist.model.Items;
 import org.springframework.data.repository.CrudRepository;
 
-public interface ListItemsRepository extends CrudRepository<ListItems, Long> {
+public interface ListItemsRepository extends CrudRepository<Items, Long> {
 
-    ListItems findById(int id);
+    Items findById(int id);
 
-    Iterable<ListItems> findAllById(int id);
+    Iterable<Items> findAllById(int id);
 
 }

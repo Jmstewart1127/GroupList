@@ -3,8 +3,8 @@ package com.grouplist.grouplist.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "list_items")
-public class ListItems {
+@Table(name = "items")
+public class Items {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -14,9 +14,9 @@ public class ListItems {
     @Column(name = "name")
     private String name;
 
-    public ListItems() {}
+    public Items() {}
 
-    public ListItems(String name) {
+    public Items(String name) {
         this.setComplete(false);
         this.setName(name);
     }

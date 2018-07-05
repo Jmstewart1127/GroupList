@@ -1,15 +1,21 @@
 package com.grouplist.grouplist.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Users {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+
     private int id;
     @Column(name = "phone_number")
     private String phoneNumber;
+    @ManyToMany(mappedBy = "users")
+    Set<Groups> groups = new HashSet<>();
 
     public Users() {}
 
@@ -31,5 +37,13 @@ public class Users {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public Set<Groups> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(Set<Groups> groups) {
+        this.groups = groups;
     }
 }
