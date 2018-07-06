@@ -3,9 +3,7 @@ package com.grouplist.grouplist.restController;
 import com.grouplist.grouplist.model.Lists;
 import com.grouplist.grouplist.service.ListsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class ListsRestController {
@@ -21,5 +19,10 @@ public class ListsRestController {
     @RequestMapping("/api/get/lists/")
     public Iterable<Lists> getListsByGroupId() {
         return listsService.findAllLists();
+    }
+
+    @RequestMapping(value = "/api/add/list", method = RequestMethod.POST)
+    public void addListItem(@RequestBody Lists list) {
+        listsService.saveList(list);
     }
 }
