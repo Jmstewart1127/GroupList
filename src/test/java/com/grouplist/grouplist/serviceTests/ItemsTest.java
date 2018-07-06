@@ -26,13 +26,12 @@ public class ItemsTest {
     ItemsService itemsService;
 
     @Test
-    public void testCreatingListItems() {
-        Groups group = new Groups("group2");
+    public void createListItemsTest() {
+        Groups group = new Groups("group3");
         Lists list = new Lists(group, "test");
-        listsService.saveList(list);
-        Lists testList = listsService.findListById(list.getId());
-        itemsService.addListItem(testList, "test");
-        Assert.assertNotNull(testList.getItems());
+        list.getItems().add(new Items("test item"));
+        itemsService.addListItem(list);
+        Assert.assertNotNull(list.getItems());
     }
 
     @Test
@@ -41,8 +40,10 @@ public class ItemsTest {
         Lists list = new Lists(group, "test");
         listsService.saveList(list);
         for (int i = 0; i < 25; i++) {
-            itemsService.addListItem(list, Integer.toString(i));
+            list.getItems().add(new Items(Integer.toString(i)));
         }
+        itemsService.addListItem(list);
+        Assert.assertNotNull(list.getItems());
     }
 
     @Test

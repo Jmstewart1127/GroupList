@@ -24,11 +24,15 @@ public class ItemsService {
         itemsRepository.save(listItem);
     }
 
-    public void addListItem(Lists list, String itemName) {
-        Items listItem = new Items(itemName);
-        List<Items> li = list.getItems();
-        li.add(listItem);
-        list.setItems(li);
+    public void addListItem(Lists list) {
         listsRepository.save(list);
     }
+
+//    public void addListItem(Lists list, String itemName) {
+//        Items listItem = new Items(itemName);
+//        List<Items> li = list.getItems();
+//        li.add(listItem);
+//        list.setItems(li);
+//        listsRepository.save(list);
+//    }
 }
