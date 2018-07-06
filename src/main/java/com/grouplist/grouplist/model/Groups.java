@@ -1,7 +1,6 @@
 package com.grouplist.grouplist.model;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -21,7 +20,7 @@ public class Groups {
             joinColumns = { @JoinColumn(name = "group_id") },
             inverseJoinColumns = { @JoinColumn(name = "user_id") }
     )
-    Set<Users> users = new HashSet<>();
+    private Set<Users> users = new HashSet<>();
 
     public Groups() {}
 

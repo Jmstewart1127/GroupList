@@ -14,7 +14,7 @@ public class Users {
     @Column(name = "phone_number")
     private String phoneNumber;
     @ManyToMany(mappedBy = "users")
-    Set<Groups> groups = new HashSet<>();
+    private Set<Groups> groups = new HashSet<>();
 
     public Users() {}
 
