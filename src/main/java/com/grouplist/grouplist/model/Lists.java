@@ -1,5 +1,7 @@
 package com.grouplist.grouplist.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +16,7 @@ public class Lists {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "group_id")
     private Groups groupId;
+    @JsonBackReference
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Items> items = new ArrayList<>();
     @Column(name = "list_name")

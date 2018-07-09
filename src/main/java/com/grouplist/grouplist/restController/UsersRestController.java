@@ -11,8 +11,13 @@ public class UsersRestController {
     @Autowired
     UserService userService;
 
-    @RequestMapping("/api/get/user/{phoneNumber}")
-    public Users getUser(@PathVariable String phoneNumber) {
+    @RequestMapping("/api/get/user/{id}")
+    public Users getUserById(@PathVariable int id) {
+        return userService.findById(id);
+    }
+
+    @RequestMapping("/api/get/user/by/phone/{phoneNumber}")
+    public Users getUserByPhoneNumber(@PathVariable String phoneNumber) {
         return userService.findUserByPhoneNumber(phoneNumber);
     }
 

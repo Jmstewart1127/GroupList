@@ -11,6 +11,10 @@ public class UserService {
     @Autowired
     UsersRepository usersRepository;
 
+    public Users findById(int id) {
+        return usersRepository.findById(id);
+    }
+
     public Users findUserByPhoneNumber(String phoneNumber) {
         return usersRepository.findByPhoneNumber(phoneNumber);
     }
