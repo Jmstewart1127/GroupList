@@ -18,21 +18,18 @@ public class ItemsService {
     @Autowired
     ListsRepository listsRepository;
 
+    public Items getItemById(int id) {
+        return itemsRepository.findById(id);
+    }
+
     public void completeListItem(int id) {
-        Items listItem = itemsRepository.findById(id);
-        listItem.setComplete(true);
-        itemsRepository.save(listItem);
+        Items item = getItemById(id);
+        item.setComplete(true);
+        itemsRepository.save(item);
     }
 
     public void addListItem(Lists list) {
         listsRepository.save(list);
     }
 
-//    public void addListItem(Lists list, String itemName) {
-//        Items listItem = new Items(itemName);
-//        List<Items> li = list.getItems();
-//        li.add(listItem);
-//        list.setItems(li);
-//        listsRepository.save(list);
-//    }
 }

@@ -3,8 +3,8 @@ package com.grouplist.grouplist.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Groups {
@@ -16,14 +16,9 @@ public class Groups {
     private int createdBy;
     @Column(name = "group_name")
     private String groupName;
-    @ManyToMany(cascade = { CascadeType.ALL })
-    @JoinTable(
-            name = "user_groups",
-            joinColumns = { @JoinColumn(name = "group_id") },
-            inverseJoinColumns = { @JoinColumn(name = "user_id") }
-    )
+    @ManyToMany
     @JsonBackReference
-    private Set<Users> users = new HashSet<>();
+    private List<Users> users = new ArrayList<>();
 
     public Groups() {}
 
@@ -34,6 +29,12 @@ public class Groups {
     public Groups(int createdBy, String groupName) {
         setCreatedBy(createdBy);
         setGroupName(groupName);
+    }
+
+    public Groups(int createdBy, String groupName, List<Users> users) {
+        setCreatedBy(createdBy);
+        setGroupName(groupName);
+        setUsers(users);
     }
 
     public int getId() {
@@ -60,11 +61,11 @@ public class Groups {
         this.groupName = groupName;
     }
 
-    public Set<Users> getUsers() {
+    public List<Users> getUsers() {
         return users;
     }
 
-    public void setUsers(Set<Users> users) {
+    public void setUsers(List<Users> users) {
         this.users = users;
     }
 }

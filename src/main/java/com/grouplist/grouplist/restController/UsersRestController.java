@@ -5,6 +5,9 @@ import com.grouplist.grouplist.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RestController
 public class UsersRestController {
 
@@ -19,6 +22,11 @@ public class UsersRestController {
     @RequestMapping("/api/get/user/by/phone/{phoneNumber}")
     public Users getUserByPhoneNumber(@PathVariable String phoneNumber) {
         return userService.findUserByPhoneNumber(phoneNumber);
+    }
+
+    @RequestMapping("/api/get/group/users/by/{id}")
+    public List<Users> getUsersByGroup(@PathVariable int id) {
+        return userService.findAllUsersByGroup(id);
     }
 
     @RequestMapping(value = "/api/create/user", method = RequestMethod.POST)

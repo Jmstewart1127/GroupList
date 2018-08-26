@@ -12,10 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = GrouplistApplication.class)
@@ -41,7 +38,7 @@ public class UserServiceTest {
         Users user = newUser();
         Groups group = new Groups("groupTest");
         groupsService.save(group);
-        Set<Users> userSet = new HashSet<>();
+        List<Users> userSet = new ArrayList<>();
         userSet.add(user);
         group.setUsers(userSet);
         groupsService.save(group);
@@ -50,7 +47,7 @@ public class UserServiceTest {
 
     @Test
     public void addUserToAlreadyCreatedGroup() {
-        Set<Users> users = new HashSet<>();
+        List<Users> users = new ArrayList<>();
         Groups group = new Groups("MultiTest");
         groupsService.save(group);
         for (int i = 0; i < 25; i++) {

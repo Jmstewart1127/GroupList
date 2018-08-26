@@ -22,8 +22,8 @@ public class GroupsRestController {
     }
 
     @RequestMapping(value = "/api/create/group", method = RequestMethod.POST)
-    public void getGroupsById(@RequestBody Groups group) {
-        groupsService.save(group);
+    public void createGroup(@RequestBody Groups group) {
+        groupsService.createNewGroup(group);
     }
 
 }

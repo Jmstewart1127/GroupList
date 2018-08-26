@@ -7,6 +7,9 @@ import com.grouplist.grouplist.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 @Service
 public class GroupsService {
 
@@ -25,8 +28,10 @@ public class GroupsService {
         return groupsRepository.findByUsers(user);
     }
 
-    public void createNewGroup(int userId, String groupName) {
-        groupsRepository.save(new Groups(userId, groupName));
+    public void createNewGroup(Groups group) {
+        Users user = usersRepository.findById(group.getCreatedBy());
+        group.getUsers().add(user);
+        groupsRepository.save(group);
     }
 
     public void save(Groups group) {
