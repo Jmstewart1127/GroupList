@@ -28,7 +28,9 @@ public class ItemsService {
         itemsRepository.save(item);
     }
 
-    public void addListItem(Lists list) {
+    public void addListItem(Items item, int listId) {
+        Lists list = listsRepository.findById(listId);
+        list.getItems().add(item);
         listsRepository.save(list);
     }
 

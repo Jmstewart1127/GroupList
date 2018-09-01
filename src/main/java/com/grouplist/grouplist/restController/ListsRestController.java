@@ -18,7 +18,7 @@ public class ListsRestController {
     }
 
     @RequestMapping("/api/get/lists/")
-    public Iterable<Lists> getListsByGroupId() {
+    public Iterable<Lists> getAllLists() {
         return listsService.findAllLists();
     }
 
