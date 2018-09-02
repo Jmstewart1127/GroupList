@@ -1,7 +1,6 @@
 package com.grouplist.grouplist.restController;
 
 import com.grouplist.grouplist.model.Items;
-import com.grouplist.grouplist.model.Lists;
 import com.grouplist.grouplist.service.ItemsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +16,7 @@ public class ItemsRestController {
         itemsService.addListItem(item, listId);
     }
 
-    @RequestMapping("/api/item/complete/{itemId}")
+    @RequestMapping(value = "/api/item/complete/{itemId}", method = RequestMethod.PUT)
     public void setItemAsComplete(@PathVariable int itemId) {
         itemsService.completeListItem(itemId);
     }
