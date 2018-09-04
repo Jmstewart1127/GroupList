@@ -17,6 +17,7 @@ public class ItemsRestController {
     }
 
     @RequestMapping(value = "/api/item/complete/{itemId}", method = RequestMethod.PUT)
+    @ResponseBody
     public void setItemAsComplete(@PathVariable int itemId) {
         itemsService.completeListItem(itemId);
     }
